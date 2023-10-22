@@ -1,40 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 프로젝트 개요
 
-## Getting Started
+- 음식주문앱
+- Next.js 13 + 리액트 + TS
+- 기획문서 [[참고링크](https://www.figma.com/file/8YNRXUe9QTMzFSR0UehcnZ/%EB%B0%B0%EB%8B%AC%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-(%EB%A6%AC%EC%95%A1%ED%8A%B8)?type=whiteboard&node-id=201%3A196&t=SxvOdvNS9Oe1ILUc-1)]
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 패키지 정보
+- next13 버전 pages 라우터
+- emotion ⇒ next/js 공식홈페이지 예제 pages 라우터 예전 예제라서 오류 발생함
+    - 11.11 버전으로 해결
+
+- components/pages 폴더 ⇒ 페이지 컴포넌트에 사용될 컴포넌트 모음 폴더
+
+
+# url 구성 
+
+| url | 페이지명 | pages 폴더위치 (/…) | 컴포넌트 폴더 (/components/pages/) | 렌더링방식 |
+| --- | --- | --- | --- | --- |
+| / | 메인 | / | /home | SSR |
+| /store/[storeId] | 가게 상세페이지 | /store | /store/detail | SSG |
+| /store/[storeId]/food/[foodId] | 음식 상세페이지 | /store/food | /food/detail | SSG  |
+| /like | 가게 찜 페이지 | /like | /like/list | SSR |
+| /cart | 음식 장바구니 페이지 | /cart | /cart/list | SSR |
+| /service | 고객센터 | /service | /service | SSR |
+
+## 프로젝트 폴더 구성
+```
+===================================================
+├── 📁public
+├── 📁src
+|   ├── 📁pages
+|   |    ├── 📄index.ts // 메인
+|   |    ├── 📁store
+|   |    |    ├── 📄[id].tsx // 가게 상세 페이지
+|   |    |    ├── ~~📄index.tsx // 가게 목록 페이지 (필요 없음)~~
+|   |    |    ├── 📁food
+|   |    |         ├── 📄[id].tsx // 가게 상세 페이지
+|   |    |         ├── ~~📄index.tsx // 가게 목록 페이지 (필요 없음)~~
+|   |    ├── 📁like
+|   |    ├── 📁cart
+|   |    |    ├── 📁
+|   |    |    |    ├── 📄
+|   |    |    ├── 📁
+|   |    |    |    ├── 📄 
+|   ├── 📁components
+|   |    ├── 📁home
+===================================================
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# 실행
+```bash
+npm install
+npm run dev 
+```
