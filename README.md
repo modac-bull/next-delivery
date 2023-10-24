@@ -55,3 +55,25 @@
 npm install
 npm run dev 
 ```
+
+
+
+## 개발 로그
+
+
+### 10.23 
+-  폴더 구성
+- next/dynamic?
+- Head.tsx 분리
+- Layout 분리
+- emotion/styled/macro 자동완선 import 시 fs 모듈 에러 컴파일 할 때 오류 발생함
+  - 해결 : .babelrc 에서 babel-plugin-macros 도 설정
+    - https://github.com/ben-rogerson/twin.examples/tree/ b52ac511ebf221471a01fea1c77d90b19a6eb5dc/next-emotion
+    - https://emotion.sh/docs/babel-macros
+
+### 10.24
+- 헤더 컴포넌트 추가
+- Emotion에 쓰일 constant 변수 별도로 관리
+- import 문 순서 정렬
+    - prettier 추가
+    - https://github.com/trivago/prettier-plugin-sort-imports
