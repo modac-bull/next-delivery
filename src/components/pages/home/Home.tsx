@@ -1,5 +1,11 @@
-import React from "react";
+import React from 'react';
+
+import Header from '@/components/layouts/Header';
 
 export default function Home() {
-  return <>메인 페이지</>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }

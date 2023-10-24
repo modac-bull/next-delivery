@@ -6,5 +6,8 @@
     "eslint:recommended",
     "plugin:react/recommended"
   ],
-  "plugins": ["@emotion"]
+  "plugins": ["@emotion", "prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }

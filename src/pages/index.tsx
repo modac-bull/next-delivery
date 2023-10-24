@@ -1,6 +1,6 @@
-import HeadPageMeta from "@/components/layouts/HeadPageMeta";
-import LayoutDefault from "@/components/layouts/LayoutDefault";
-import Home from "@/components/pages/home/Home";
+import HeadPageMeta from '@/components/layouts/HeadPageMeta';
+import LayoutDefault from '@/components/layouts/LayoutDefault';
+import Home from '@/components/pages/home/Home';
 
 export default function HomePage() {
   return (

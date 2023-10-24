@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from '@emotion/styled/macro';
 
 type Props = {
   children: React.ReactNode;
