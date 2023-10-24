@@ -5,7 +5,7 @@ import Header from '@/components/layouts/Header';
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header title="메인" />
     </>
   );
 }
