@@ -77,3 +77,4 @@ npm run dev
 - import 문 순서 정렬
     - prettier 추가
     - https://github.com/trivago/prettier-plugin-sort-imports
+- react-icons 사용 - 아이콘 빠르게 사용하기 위해
