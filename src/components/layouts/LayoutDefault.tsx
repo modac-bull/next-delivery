@@ -12,5 +12,4 @@ const LayoutContainer = styled.div`
   width: 100%;
   max-width: 750px;
   margin: 0 auto;
-  border: 1px solid #eee; // 임시
 `;
