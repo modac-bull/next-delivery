@@ -8,7 +8,12 @@ import LocalStorageUtil from '@/utils/localStorageUtil';
 
 import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
-import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
+import {
+  BackButton,
+  CartButton,
+  HomeButton,
+  LikeButton,
+} from '@/components/ui/header';
 
 import CartLists from './CartLists';
 
@@ -69,7 +74,6 @@ export default function Cart() {
     LocalStorageUtil.set(localStorageKey['CART_KEY'], cart);
 
     fetchData();
-
   }, [selectedId]);
 
   return (
@@ -79,6 +83,7 @@ export default function Cart() {
         leftActions={<BackButton />}
         rightActions={
           <>
+            <HomeButton />
             <LikeButton />
             <CartButton />
           </>

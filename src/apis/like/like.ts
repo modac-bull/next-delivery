@@ -1,5 +1,6 @@
-import LocalStorageUtil from "@/core/LocalStorageUtil";
-import { localStorageKey } from "@/core/constant";
+import { localStorageKey } from '@/utils/constants';
+import LocalStorageUtil from '@/utils/localStorageUtil';
+
 const LIKE_KEY = localStorageKey.LIKE_KEY;
 
 /* 
@@ -53,7 +54,7 @@ export const deleteLikeStore = (id: string): Promise<boolean> => {
         }
         // 로컬 스토리지에서 storeIdx 배열값 제거
         const updatedLikeIds = getLikeIds.filter(
-          (likeId: string) => likeId !== id
+          (likeId: string) => likeId !== id,
         );
         LocalStorageUtil.set(LIKE_KEY, updatedLikeIds);
 

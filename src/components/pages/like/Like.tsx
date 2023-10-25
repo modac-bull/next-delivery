@@ -1,7 +1,12 @@
 import React from 'react';
 
 import Header from '@/components/layouts/Header';
-import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
+import {
+  BackButton,
+  CartButton,
+  HomeButton,
+  LikeButton,
+} from '@/components/ui/header';
 
 export default function Like() {
   return (
@@ -11,6 +16,7 @@ export default function Like() {
         leftActions={<BackButton />}
         rightActions={
           <>
+            <HomeButton />
             <LikeButton />
             <CartButton />
           </>
