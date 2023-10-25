@@ -4,12 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { getStoreListData } from '@/apis/store/store';
 import { StoreItemType } from '@/apis/store/types';
 
+import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
 import { CartButton, LikeButton } from '@/components/ui/header';
 
-import { variables } from '@/styles/variables';
-
-import StoreItem from './StoreItem';
 import StoreList from './StoreList';
 
 export default function Home() {
@@ -28,6 +26,7 @@ export default function Home() {
     };
     fetchData();
   }, []);
+
   return (
     <>
       <Header
@@ -40,7 +39,7 @@ export default function Home() {
         }
       />
 
-      <HomeArea>
+      <ContentArea>
         {/* 메인페이지 가게 목록 */}
         {loading ? (
           // TODO Spinner
@@ -51,11 +50,7 @@ export default function Home() {
           // TODO 데이터 없음 공통 컴포넌트화 하기
           <div>데이터 없음</div>
         )}
-      </HomeArea>
+      </ContentArea>
     </>
   );
 }
-
-const HomeArea = styled.div`
-  padding: calc(${variables['header-height']} + 20px) ${variables['gutter-m']};
-`;

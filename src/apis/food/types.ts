@@ -1,5 +1,5 @@
 // 음식 목록 타입
-export interface FoodListlItem {
+export interface FoodListlItemType {
   id: number;
   thumbImg: string;
   title: string;
@@ -8,19 +8,19 @@ export interface FoodListlItem {
 }
 
 // 음식 상세 타입
-export interface FoodDetailItem extends FoodListlItem {
-  options?: FoodOptionItem[];
+export interface FoodDetailItemType extends FoodListlItemType {
+  options?: FoodOptionItemType[];
 }
 
 // 음식 옵션 타입
-export interface FoodOptionItem {
+export interface FoodOptionItemType {
   id: number;
   title: string;
   price: number;
 }
 
 // 장바구니 음식 데이터
-export interface selectedFoodInfo {
+export interface selectedFoodInfoType {
   foodId: string | null;
   optionIds: string[];
 }

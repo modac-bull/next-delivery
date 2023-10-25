@@ -10,7 +10,7 @@ export interface StoreItemType {
   thumImgUrls: [string, string, string];
 }
 
-export interface StoreInfo extends StoreItemType {
+export interface StoreInfoType extends StoreItemType {
   minimum_price: number;
   comments: number;
   like_cnt: number;

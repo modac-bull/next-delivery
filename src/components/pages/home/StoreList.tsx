@@ -3,6 +3,8 @@ import React from 'react';
 
 import { StoreItemType } from '@/apis/store/types';
 
+import { variables } from '@/styles/variables';
+
 import StoreItem from './StoreItem';
 
 type Props = {
@@ -30,4 +32,7 @@ export default function StoreList({ data }: Props) {
   );
 }
 
-const StoreListContainer = styled.ul``;
+const StoreListContainer = styled.ul`
+  margin-top: 20px;
+  padding: 0 ${variables['gutter-m']};
+`;

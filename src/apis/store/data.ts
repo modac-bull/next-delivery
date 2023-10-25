@@ -1,4 +1,4 @@
-import { StoreInfo, StoreItemType } from './types';
+import { StoreInfoType, StoreItemType } from './types';
 
 // 가게 리스트 더미 데이터
 export const DUMMY_STORE_LIST: StoreItemType[] = [
@@ -66,9 +66,9 @@ export const DUMMY_STORE_LIST: StoreItemType[] = [
 
 // 가게 리스트 더미 데이터
 export const DUMMY_STORE_DETAIL: {
-  [key: number]: StoreInfo;
+  [key: string]: StoreInfoType;
 } = {
-  1: {
+  '1': {
     id: '1',
     title: '방이시장 돈까스짱 방이시장점',
     type: 0,
@@ -86,7 +86,7 @@ export const DUMMY_STORE_DETAIL: {
     comments: 1231,
     like_cnt: 14,
   },
-  2: {
+  '2': {
     id: '2',
     title: '수곱도리탕전문전 송파점',
     type: 0,
@@ -104,7 +104,7 @@ export const DUMMY_STORE_DETAIL: {
     comments: 1231,
     like_cnt: 14,
   },
-  3: {
+  '3': {
     id: '3',
     title: '유캔두잇 서울잠실점',
     type: 0,
@@ -122,7 +122,7 @@ export const DUMMY_STORE_DETAIL: {
     comments: 1231,
     like_cnt: 14,
   },
-  4: {
+  '4': {
     id: '4',
     title: '양가네1인김치찜도시락 송파점',
     type: 0,

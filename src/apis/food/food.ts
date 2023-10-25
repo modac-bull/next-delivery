@@ -1,15 +1,17 @@
-import { DUMMY_FOOD_DETAIL, DUMMY_FOOD_LIST } from "./data";
-import { FoodDetailItem, FoodListlItem } from "./types";
+import { DUMMY_FOOD_DETAIL, DUMMY_FOOD_LIST } from './data';
+import { FoodDetailItemType, FoodListlItemType } from './types';
 
 /* 
 음식 리스트 데이터 api
 */
-export const getFoodListDataByIdx = (idx: string): Promise<FoodListlItem[]> => {
+export const getFoodListDataById = (
+  id: string,
+): Promise<FoodListlItemType[]> => {
   return new Promise((res, rej) => {
     const success = true; // 임시
     setTimeout(() => {
       if (success) {
-        res(DUMMY_FOOD_LIST[idx]);
+        res(DUMMY_FOOD_LIST[id]);
       } else {
         rej(new Error());
       }
@@ -20,7 +22,9 @@ export const getFoodListDataByIdx = (idx: string): Promise<FoodListlItem[]> => {
 /* 
 음식 상세 데이터 api
 */
-export const getFoodDetailByIdx = (idx: number): Promise<FoodDetailItem> => {
+export const getFoodDetailByIdx = (
+  idx: number,
+): Promise<FoodDetailItemType> => {
   return new Promise((res, rej) => {
     const success = true; // 임시
     setTimeout(() => {
