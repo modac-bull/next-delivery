@@ -10,8 +10,8 @@ import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
 
+import FoodLists from './FoodLists';
 import StoreInfo from './StoreInfo';
-import styled from '@emotion/styled/macro';
 
 export default function StoreDetail() {
   const router = useRouter();
@@ -29,15 +29,10 @@ export default function StoreDetail() {
       try {
         const storeDetailRes = await getStoreDetailById(id);
         const foodListsRes = await getFoodListDataById(id);
-
-        console.log('id', IDBKeyRange);
-        console.log(storeDetailRes);
         setStoreDetail(storeDetailRes);
         setFoodLists(foodListsRes);
-
         setLoading(false);
       } catch (error) {
-        console.log('error');
         setLoading(false);
       }
     };
@@ -63,6 +58,14 @@ export default function StoreDetail() {
           <StoreInfo data={storeDetail} />
         ) : (
           <p>데이터 없음</p>
+        )}
+
+        {loading ? (
+          <p>로딩중</p>
+        ) : !!foodLists ? (
+          <FoodLists data={foodLists} />
+        ) : (
+          <p>데이터 없음F</p>
         )}
       </ContentArea>
     </>
