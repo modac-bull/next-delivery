@@ -3,6 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 import { getFoodListDataById } from '@/apis/food/food';
 import { FoodListlItemType } from '@/apis/food/types';
+import {
+  deleteLikeStore,
+  getLikeStoreList,
+  postLikeStore,
+} from '@/apis/like/like';
 import { getStoreDetailById } from '@/apis/store/store';
 import { StoreInfoType } from '@/apis/store/types';
 
@@ -29,6 +34,14 @@ export default function StoreDetail() {
       try {
         const storeDetailRes = await getStoreDetailById(id);
         const foodListsRes = await getFoodListDataById(id);
+        
+        const isLikeRes = await getLikeStoreList();
+        if (isLikeRes.includes(id)) {
+          setIsLike(true);
+        } else {
+          setIsLike(false);
+        }
+
         setStoreDetail(storeDetailRes);
         setFoodLists(foodListsRes);
         setLoading(false);
@@ -38,6 +51,30 @@ export default function StoreDetail() {
     };
     fetchData();
   }, [router]);
+
+  // 좋아요
+  const [isLike, setIsLike] = useState(false);
+  const setLikeHandler = async (storeId: string) => {
+    setIsLike((prev) => !prev); // 임시로 변경
+    console.log('storeID', storeId);
+
+    try {
+      let response;
+      if (isLike) {
+        response = await deleteLikeStore(storeId);
+      } else {
+        response = await postLikeStore(storeId);
+      }
+      if (!response) {
+        // 실패하면 상태 다시 변경 (원래대로)
+        setIsLike((prev) => !prev);
+      }
+    } catch (error) {
+      // 에러나도 원래대로
+      setIsLike((prev) => !prev);
+      alert('좋아요 실패');
+    }
+  };
 
   return (
     <>
@@ -55,7 +92,11 @@ export default function StoreDetail() {
         {loading ? (
           <p>로딩중</p>
         ) : !!storeDetail ? (
-          <StoreInfo data={storeDetail} />
+          <StoreInfo
+            data={storeDetail}
+            isLike={isLike}
+            likeHandler={setLikeHandler}
+          />
         ) : (
           <p>데이터 없음</p>
         )}

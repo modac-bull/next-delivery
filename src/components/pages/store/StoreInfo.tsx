@@ -6,30 +6,37 @@ import { StoreInfoType } from '@/apis/store/types';
 
 type Props = {
   data: StoreInfoType;
+  isLike: boolean;
+  likeHandler: (storeId: string) => void;
 };
 
-export default function StoreInfo({ data }: Props) {
+export default function StoreInfo({ data, isLike, likeHandler }: Props) {
   const {
     id,
     title,
-    type,
     delivery_time,
     review_point,
     review_cnt,
-    distance,
-    delivery_price_range,
     thumImgUrls,
     minimum_price,
-    like_cnt,
     comments,
   } = data;
+
+  const likeStoreHandler = (menuId: string) => {
+    likeHandler(menuId);
+  };
+
   return (
     <StoreInfoContainer>
       <div className="img-wrap">
         <img src={thumImgUrls[0]} />
         <button type="button" id="btnLike" className="btn-like">
           <i>
-            <FaHeart color="white" size={24} />
+            <FaHeart
+              color={isLike ? 'red' : 'white'}
+              size={24}
+              onClick={() => likeStoreHandler(id)}
+            />
           </i>
         </button>
       </div>
