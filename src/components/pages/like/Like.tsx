@@ -48,11 +48,6 @@ export default function Like() {
     fetchData();
   }, []);
 
-  const selectRemoveItem = (menuId: string) => {
-    console.log('클릭?', menuId);
-    setSelectedId(menuId);
-  };
-
   return (
     <>
       <Header

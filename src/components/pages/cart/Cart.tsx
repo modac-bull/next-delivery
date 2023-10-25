@@ -57,7 +57,6 @@ export default function Cart() {
   }, []);
 
   const selectRemoveItem = (menuId: string) => {
-    console.log('클릭?', menuId);
     setSelectedId(menuId);
   };
 

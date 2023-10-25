@@ -19,16 +19,10 @@ export const postLikeStore = (id: string): Promise<boolean> => {
         if (isExist) {
           return res(true);
         }
-        // 로컬 스토리지에 storeIdx 배열값 저장
-        // res(DUMMY_STORE_LIST);
-
         getLikeIds.push(id);
-        console.log(getLikeIds);
         LocalStorageUtil.set(LIKE_KEY, getLikeIds);
-
         return res(true);
       } else {
-        // rej(new Error());
         return rej(false);
       }
     }, 400);

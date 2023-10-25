@@ -56,8 +56,6 @@ export default function StoreDetail() {
   const [isLike, setIsLike] = useState(false);
   const setLikeHandler = async (storeId: string) => {
     setIsLike((prev) => !prev); // 임시로 변경
-    console.log('storeID', storeId);
-
     try {
       let response;
       if (isLike) {

@@ -1,5 +1,4 @@
-import styled from '@emotion/styled/macro';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { getStoreListData } from '@/apis/store/store';
 import { StoreItemType } from '@/apis/store/types';
