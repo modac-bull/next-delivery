@@ -1,6 +1,6 @@
 import styled from '@emotion/styled/macro';
 import Link from 'next/link';
-import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
 import { StoreItemType } from '@/apis/store/types';
 
@@ -36,10 +36,14 @@ export default function StoreItem({
             <h2 className="title">{title}</h2>
           </div>
           <div className="description">
-            <span className="reviews">
-              <i className="fa fa-star fa-lg"></i>
-              {review_point} ({review_cnt.toLocaleString()})
-            </span>
+            <div className="reviews">
+              <i>
+                <FaStar color="orange" />
+              </i>
+              <span>
+                {review_point} ({review_cnt.toLocaleString()})
+              </span>
+            </div>
             <span> {distance}km</span>
             <span>
               {delivery_price_range[0].toLocaleString()}원 ~{' '}
