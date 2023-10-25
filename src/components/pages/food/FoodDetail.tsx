@@ -41,6 +41,10 @@ export default function FoodDetail() {
     fetchData();
   }, [router]);
 
+  /* 
+  TODO
+  - 옵션 상태 업데이트 핸들러 함수 추가하기
+   */
   const [selectedInfo, setSelectedInfo] = useState<SelectedFoodInfoType | null>(
     null,
   );
