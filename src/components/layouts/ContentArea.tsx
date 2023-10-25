@@ -7,9 +7,9 @@ type Props = {
 };
 
 export default function ContentArea({ children }: Props) {
-  return <ContanerAreaContainer>{children}</ContanerAreaContainer>;
+  return <ContentAreaContainer>{children}</ContentAreaContainer>;
 }
 
-const ContanerAreaContainer = styled.div`
+const ContentAreaContainer = styled.div`
   padding: calc(${variables['header-height']}) 0;
 `;

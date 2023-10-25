@@ -11,6 +11,7 @@ import Header from '@/components/layouts/Header';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
 
 import StoreInfo from './StoreInfo';
+import styled from '@emotion/styled/macro';
 
 export default function StoreDetail() {
   const router = useRouter();

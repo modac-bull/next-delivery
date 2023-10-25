@@ -63,6 +63,8 @@ export default function StoreInfo({ data }: Props) {
           </dd>
         </dl>
       </div>
+
+      <Divider />
     </StoreInfoContainer>
   );
 }
@@ -154,4 +156,11 @@ const StoreInfoContainer = styled.div`
       }
     }
   }
+`;
+
+const Divider = styled.div`
+  width: 100%;
+  height: 8px;
+  background-color: #f4f4f4;
+  border-top: 1px solid #ededed;
 `;
