@@ -7,12 +7,13 @@ import { variables } from '@/styles/variables';
 
 type Props = {
   price: number;
+  onClick: () => void;
 };
 
-export default function PriceInfo({price}: Props) {
+export default function PriceInfo({ price, onClick }: Props) {
   return (
     <PriceInfoContainer>
-      <Button variant="primary">
+      <Button variant="primary" onClick={onClick}>
         <span id="total-price">{price.toLocaleString()}</span>원 담기
       </Button>
     </PriceInfoContainer>

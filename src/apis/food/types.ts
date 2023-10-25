@@ -20,7 +20,7 @@ export interface FoodOptionItemType {
 }
 
 // 장바구니 음식 데이터
-export interface selectedFoodInfoType {
+export interface SelectedFoodInfoType {
   foodId: string | null;
   optionIds: string[];
 }

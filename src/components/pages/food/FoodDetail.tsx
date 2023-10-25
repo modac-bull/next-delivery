@@ -3,7 +3,10 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 import { getFoodDetailById } from '@/apis/food/food';
-import { FoodDetailItemType } from '@/apis/food/types';
+import { FoodDetailItemType, SelectedFoodInfoType } from '@/apis/food/types';
+
+import { localStorageKey } from '@/utils/constants';
+import LocalStorageUtil from '@/utils/localStorageUtil';
 
 import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
@@ -38,6 +41,28 @@ export default function FoodDetail() {
     fetchData();
   }, [router]);
 
+  const [selectedInfo, setSelectedInfo] = useState<SelectedFoodInfoType | null>(
+    null,
+  );
+  const handleAddCart = () => {
+    setSelectedInfo((prev) => {
+      const prevInfo = prev as SelectedFoodInfoType;
+      return {
+        ...prevInfo,
+        foodId: id,
+      };
+    });
+  };
+  useEffect(() => {
+    if (!selectedInfo) return;
+    let storedCartItems = LocalStorageUtil.get<SelectedFoodInfoType[]>(
+      localStorageKey['CART_KEY'],
+      [],
+    );
+    storedCartItems.push(selectedInfo);
+    LocalStorageUtil.set(localStorageKey['CART_KEY'], storedCartItems);
+  }, [selectedInfo]);
+
   return (
     <>
       <Header
@@ -61,9 +86,11 @@ export default function FoodDetail() {
         )}
 
         <SectionTitle>추가선택</SectionTitle>
-        {foodDetail?.options?.map((option) => <FoodOption data={option} />)}
+        {foodDetail?.options?.map((option) => (
+          <FoodOption key={option.id} data={option} />
+        ))}
 
-        <PriceInfo price={foodDetail?.price ?? 0} />
+        <PriceInfo price={foodDetail?.price ?? 0} onClick={handleAddCart} />
       </ContentArea>
     </>
   );
