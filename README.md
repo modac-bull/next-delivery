@@ -78,3 +78,10 @@ npm run dev
     - prettier 추가
     - https://github.com/trivago/prettier-plugin-sort-imports
 - react-icons 사용 - 아이콘 빠르게 사용하기 위해
+
+### 10.25
+- 메인 페이지 데이터 페칭 작업
+- 가게 상세 페이지
+- 음식 상세 페이지
+- 가게 좋아요 기능 추가
+- 음식 장바구니 기능 추가
