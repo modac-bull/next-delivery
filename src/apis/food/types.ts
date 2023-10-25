@@ -1,6 +1,6 @@
 // 음식 목록 타입
 export interface FoodListlItemType {
-  id: number;
+  id: string;
   thumbImg: string;
   title: string;
   desc: string;
@@ -14,7 +14,7 @@ export interface FoodDetailItemType extends FoodListlItemType {
 
 // 음식 옵션 타입
 export interface FoodOptionItemType {
-  id: number;
+  id: string;
   title: string;
   price: number;
 }
