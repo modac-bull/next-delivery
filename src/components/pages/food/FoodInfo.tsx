@@ -1,11 +1,6 @@
 import styled from '@emotion/styled/macro';
-import React from 'react';
 
 import { FoodDetailItemType } from '@/apis/food/types';
-
-import { variables } from '@/styles/variables';
-
-import FoodOption from './FoodOption';
 
 type Props = {
   data: FoodDetailItemType;
@@ -28,9 +23,6 @@ export default function FoodInfo({ data }: Props) {
           </div>
         </div>
         <Divider />
-
-        <SectionTitle>추가선택</SectionTitle>
-        {options?.map((option) => <FoodOption data={option} />)}
       </FoodInfoContainer>
     </>
   );
@@ -78,11 +70,4 @@ const Divider = styled.div`
   height: 8px;
   background-color: #f4f4f4;
   border-top: 1px solid #ededed;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 18px;
-  font-weight: 700;
-  margin-top: 25px;
-  padding: 0 ${variables['gutter-m']};
 `;
