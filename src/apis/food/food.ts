@@ -1,5 +1,11 @@
+import LocalStorageUtil from '@/utils/localStorageUtil';
+
 import { DUMMY_FOOD_DETAIL, DUMMY_FOOD_LIST } from './data';
-import { FoodDetailItemType, FoodListlItemType } from './types';
+import {
+  FoodDetailItemType,
+  FoodListlItemType,
+  SelectedFoodInfoType,
+} from './types';
 
 /* 
 음식 리스트 데이터 api
@@ -22,9 +28,7 @@ export const getFoodListDataById = (
 /* 
 음식 상세 데이터 api
 */
-export const getFoodDetailById = (
-  id: string,
-): Promise<FoodDetailItemType> => {
+export const getFoodDetailById = (id: string): Promise<FoodDetailItemType> => {
   return new Promise((res, rej) => {
     const success = true; // 임시
     setTimeout(() => {
