@@ -13,13 +13,17 @@ type Props = {
 export default function CartLists({ data, selecteHandler }: Props) {
   return (
     <CartListsContainer>
-      {data?.map((cartItem) => (
-        <CartItem
-          key={cartItem.id}
-          data={cartItem}
-          selecteHandler={selecteHandler}
-        />
-      ))}
+      {data && data.length > 0 ? (
+        data?.map((cartItem) => (
+          <CartItem
+            key={cartItem.id}
+            data={cartItem}
+            selecteHandler={selecteHandler}
+          />
+        ))
+      ) : (
+        <li>장바구니 목록이 없습니다.</li>
+      )}
     </CartListsContainer>
   );
 }
