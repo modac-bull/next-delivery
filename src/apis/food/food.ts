@@ -22,14 +22,14 @@ export const getFoodListDataById = (
 /* 
 음식 상세 데이터 api
 */
-export const getFoodDetailByIdx = (
-  idx: number,
+export const getFoodDetailById = (
+  id: string,
 ): Promise<FoodDetailItemType> => {
   return new Promise((res, rej) => {
     const success = true; // 임시
     setTimeout(() => {
       if (success) {
-        res(DUMMY_FOOD_DETAIL[idx]);
+        res(DUMMY_FOOD_DETAIL[id]);
       } else {
         rej(new Error());
       }

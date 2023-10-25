@@ -133,7 +133,7 @@ export const DUMMY_FOOD_LIST: { [key: string]: FoodListlItemType[] } = {
 
 // 음식 상세 데이터
 export const DUMMY_FOOD_DETAIL: {
-  [key: number]: FoodDetailItemType;
+  [key: string]: FoodDetailItemType;
 } = {
   1: {
     id: 1,
