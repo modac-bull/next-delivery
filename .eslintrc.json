@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": ["@emotion", "prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
 }

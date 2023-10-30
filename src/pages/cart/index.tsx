@@ -1,14 +1,16 @@
+import React from 'react';
+
 import HeadPageMeta from '@/components/layouts/HeadPageMeta';
 import LayoutDefault from '@/components/layouts/LayoutDefault';
-import Home from '@/components/pages/home/Home';
+import Cart from '@/components/pages/cart/Cart';
 
-export default function HomePage() {
+export default function CartPage() {
   return (
     <>
-      <HeadPageMeta title="음식 배달 앱 (next/ts)" />
+      <HeadPageMeta title="음식 배달 앱 (next/ts) - 장바구니 " />
 
       <LayoutDefault>
-        <Home />
+        <Cart />
       </LayoutDefault>
     </>
   );
