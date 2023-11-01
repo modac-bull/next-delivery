@@ -4,24 +4,32 @@ import { FaStar } from 'react-icons/fa';
 
 import { StoreItemType } from '@/apis/store/types';
 
-type Props = StoreItemType & {
+type Props = {
   id: string;
+  title: string;
+  type: 0 | 1 | 2;
+  deliveryTime: [number, number];
+  reviewPoint: number;
+  reviewCnt: number;
+  distance: number;
+  deliveryPriceRange: [number, number];
+  thumImgUrls: [string, string, string];
 };
 
 export default function StoreItem({
   id,
   title,
   type,
-  delivery_time,
-  review_point,
-  review_cnt,
+  deliveryTime,
+  reviewPoint,
+  reviewCnt,
   distance,
-  delivery_price_range,
+  deliveryPriceRange,
   thumImgUrls,
 }: Props) {
   return (
     <Link href={`/store/${id}`}>
-      <ImgWrapper className="img-wrapper_oFq_e">
+      <ImgWrapper>
         <div className="left">
           <img src={thumImgUrls[0]} />
         </div>
@@ -41,19 +49,19 @@ export default function StoreItem({
                 <FaStar color="orange" />
               </i>
               <span>
-                {review_point} ({review_cnt.toLocaleString()})
+                {reviewPoint} ({reviewCnt.toLocaleString()})
               </span>
             </div>
             <span> {distance}km</span>
             <span>
-              {delivery_price_range[0].toLocaleString()}원 ~{' '}
-              {delivery_price_range[1].toLocaleString()}원
+              {deliveryPriceRange[0].toLocaleString()}원 ~{' '}
+              {deliveryPriceRange[1].toLocaleString()}원
             </span>
           </div>
         </div>
         <div className="right">
           <p>
-            {delivery_time[0]} ~ {delivery_time[1]} 분
+            {deliveryTime[0]} ~ {deliveryTime[1]} 분
           </p>
         </div>
       </InfoWrapper>

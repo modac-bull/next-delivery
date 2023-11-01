@@ -14,11 +14,11 @@ export default function LikeItem({ data }: Props) {
       id={data.id}
       title={data.title}
       type={data.type}
-      delivery_time={data.delivery_time}
-      review_point={data.review_point}
-      review_cnt={data.review_cnt}
+      deliveryTime={data.delivery_time}
+      reviewPoint={data.review_point}
+      reviewCnt={data.review_cnt}
       distance={data.distance}
-      delivery_price_range={data.delivery_price_range}
+      deliveryPriceRange={data.delivery_price_range}
       thumImgUrls={data.thumImgUrls}
     />
   );
