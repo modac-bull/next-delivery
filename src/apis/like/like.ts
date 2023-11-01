@@ -8,6 +8,9 @@ const LIKE_KEY = localStorageKey.LIKE_KEY;
 1. 80% 확률로 성공하도록 세팅
 2. 성공하면 true, 로컬스토리지에 likeIdx 배열로 저장
 3. 실패하면 false
+
+TODO
+- async 구문으로 바꿔보고 변경점 경험해보기
 */
 export const postLikeStore = (id: string): Promise<boolean> => {
   return new Promise((res, rej) => {

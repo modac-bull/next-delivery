@@ -20,11 +20,11 @@ export default function StoreList({ data }: Props) {
           id={store.id}
           title={store.title}
           type={store.type}
-          delivery_time={store.delivery_time}
-          review_point={store.review_point}
-          review_cnt={store.review_cnt}
+          deliveryTime={store.delivery_time}
+          reviewPoint={store.review_point}
+          reviewCnt={store.review_cnt}
           distance={store.distance}
-          delivery_price_range={store.delivery_price_range}
+          deliveryPriceRange={store.delivery_price_range}
           thumImgUrls={store.thumImgUrls}
         />
       ))}
