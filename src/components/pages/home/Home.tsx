@@ -9,22 +9,12 @@ import { CartButton, LikeButton } from '@/components/ui/header';
 
 import StoreList from './StoreList';
 
-export default function Home() {
-  const [storeLists, setStoreLists] = useState<StoreItemType[]>();
-  const [loading, setLoading] = useState(true);
+type Props = {
+  data: StoreItemType[];
+};
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await getStoreListData();
-        setStoreLists(res);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+export default function Home({ data }: Props) {
+  const storeLists = data;
 
   return (
     <>
@@ -40,10 +30,7 @@ export default function Home() {
 
       <ContentArea>
         {/* 메인페이지 가게 목록 */}
-        {loading ? (
-          // TODO Spinner
-          <p>로딩중</p>
-        ) : storeLists && storeLists.length > 0 ? (
+        {storeLists && storeLists.length > 0 ? (
           <StoreList data={storeLists} />
         ) : (
           // TODO 데이터 없음 공통 컴포넌트화 하기
