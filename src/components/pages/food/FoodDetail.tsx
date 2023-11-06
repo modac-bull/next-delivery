@@ -18,28 +18,33 @@ import FoodInfo from './FoodInfo';
 import FoodOption from './FoodOption';
 import PriceInfo from './PriceInfo';
 
-export default function FoodDetail() {
+type Props = {
+  data: FoodDetailItemType;
+};
+
+export default function FoodDetail({ data }: Props) {
   const router = useRouter();
   const id = router.query.id as string;
+  const foodDetail = data;
 
-  const [foodDetail, setFoodDetail] = useState<FoodDetailItemType | null>(null);
-  const [loading, setLoading] = useState(true);
+  // const [foodDetail, setFoodDetail] = useState<FoodDetailItemType | null>(null);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!router.isReady) return;
+  // useEffect(() => {
+  //   if (!router.isReady) return;
 
-    const fetchData = async () => {
-      try {
-        const foodDetail = await getFoodDetailById(id);
-        setFoodDetail(foodDetail);
+  //   const fetchData = async () => {
+  //     try {
+  //       const foodDetail = await getFoodDetailById(id);
+  //       setFoodDetail(foodDetail);
 
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [router]);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [router]);
 
   /* 
   TODO
@@ -49,6 +54,7 @@ export default function FoodDetail() {
     null,
   );
   const handleAddCart = () => {
+    console.log('click?')
     setSelectedInfo((prev) => {
       const prevInfo = prev as SelectedFoodInfoType;
       return {
@@ -81,13 +87,7 @@ export default function FoodDetail() {
       />
 
       <ContentArea>
-        {loading ? (
-          <p>로딩중</p>
-        ) : !!foodDetail ? (
-          <FoodInfo data={foodDetail} />
-        ) : (
-          <p>데이터 없음</p>
-        )}
+        {!!foodDetail ? <FoodInfo data={foodDetail} /> : <p>데이터 없음</p>}
 
         <SectionTitle>추가선택</SectionTitle>
         {foodDetail?.options?.map((option) => (
