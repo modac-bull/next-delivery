@@ -66,11 +66,11 @@ export default function StoreDetail() {
       if (!response) {
         // 실패하면 상태 다시 변경 (원래대로)
         setIsLike((prev) => !prev);
+        alert('좋아요 요청 실패');
       }
     } catch (error) {
       // 에러나도 원래대로
       setIsLike((prev) => !prev);
-      alert('좋아요 실패');
     }
   };
 
