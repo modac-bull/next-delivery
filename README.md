@@ -19,11 +19,11 @@
 | url | 페이지명 | pages 폴더위치 (/…) | 컴포넌트 폴더 (/components/pages/) | 렌더링방식 |
 | --- | --- | --- | --- | --- |
 | / | 메인 | / | /home | SSR |
-| /store/[storeId] | 가게 상세페이지 | /store | /store/detail | SSG |
-| /store/[storeId]/food/[foodId] | 음식 상세페이지 | /store/food | /food/detail | SSG  |
-| /like | 가게 찜 페이지 | /like | /like/list | SSR |
-| /cart | 음식 장바구니 페이지 | /cart | /cart/list | SSR |
-| /service | 고객센터 | /service | /service | SSR |
+| /store/[storeId] | 가게 상세페이지 | /store | /store/detail | ISR |
+| /store/[storeId]/food/[foodId] | 음식 상세페이지 | /store/food | /food/detail | ISR  |
+| /like | 가게 찜 페이지 | /like | /like/list | SSG + CS 데이터페칭 |
+| /cart | 음식 장바구니 페이지 | /cart | /cart/list | SSG + CS 데이터페칭 |
+| /service | 고객센터 | /service | /service | SSG |
 
 ## 프로젝트 폴더 구성
 ```
