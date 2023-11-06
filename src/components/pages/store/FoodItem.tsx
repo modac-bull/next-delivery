@@ -12,7 +12,7 @@ export default function FoodItem({ data }: Props) {
   const { title, desc, id, price, thumbImg } = data;
   return (
     <FoodItemContainer>
-      <Link href={`/food/${id}`} passHref>
+      <Link href={`/food/${id}`}>
         <StyledLink>
           <div className="txt-wrap">
             <p className="title-food">{title}</p>
@@ -59,7 +59,7 @@ const FoodItemContainer = styled.li`
   }
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 25px;

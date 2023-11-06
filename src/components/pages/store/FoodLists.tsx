@@ -15,7 +15,8 @@ export default function FoodLists({ data }: Props) {
     <FoodListsContainer>
       {/* 추천 메뉴 */}
       <SectionTitle>추천 메뉴</SectionTitle>
-      {data.length > 0 && data.map((food) => <FoodItem data={food} />)}
+      {data.length > 0 &&
+        data.map((food) => <FoodItem key={food.id} data={food} />)}
     </FoodListsContainer>
   );
 }
