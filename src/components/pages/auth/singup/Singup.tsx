@@ -1,19 +1,18 @@
 import styled from '@emotion/styled/macro';
-import { useRef } from 'react';
+import React, { InputHTMLAttributes, useRef } from 'react';
 
 import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
 import Button from '@/components/ui/buttons/Button';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
-import ButtonText from '@/components/ui/buttons/ButtonText';
 
-export default function Signin() {
+export default function Signup() {
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   return (
     <>
       <Header
-        title="로그인"
+        title="회원가입"
         leftActions={<BackButton />}
         rightActions={
           <>
@@ -44,8 +43,7 @@ export default function Signin() {
               />
             </FormGroup>
             <ButtonWrapper>
-              <Button>로그인</Button>
-              <ButtonText href="/auth/signup">회원가입 하러가기</ButtonText>
+              <Button href="/auth/signup">회원가입하기</Button>
             </ButtonWrapper>
           </form>
         </Section>
