@@ -26,7 +26,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     // 이메일 중복 확인
     const existingUser = await db.collection('users').findOne({ email });
     if (existingUser) {
-      return res.status(409).json({ message: '이미 존재하는 회원입니다.' });
+      return res.status(422).json({ message: '이미 존재하는 회원입니다.' });
     }
 
     // 비밀번호 해시
@@ -60,7 +60,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     // 회원가입 성공 응답
     res.status(201).json({ token });
   } catch (error) {
-    console.log('error : ', error);
     res.status(500).json({ message: 'Internal Server Error', error });
   }
 }

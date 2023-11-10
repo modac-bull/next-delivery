@@ -1,5 +1,5 @@
 import styled from '@emotion/styled/macro';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import React, { InputHTMLAttributes, useRef } from 'react';
 
 import ContentArea from '@/components/layouts/ContentArea';
@@ -24,9 +24,16 @@ export default function Signup() {
         email: enteredEmail,
         password: enteredPassword,
       });
-      // 리다이렉트 처리 할 수도 있음F
+      console.log('response : ', response);
+      alert('회원가입이 완료되었습니다.');
+      // TODO -> /auth/signin 으로 리다이렉트 처리하기
+      
     } catch (error) {
-      // 에러 처리
+      // axios에서 발생한 error
+      if (axios.isAxiosError(error)) {
+        // 에러 처리
+        alert(error.response?.data.message);
+      }
     }
   };
 
