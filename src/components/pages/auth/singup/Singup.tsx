@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro';
 import axios, { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
 import React, { InputHTMLAttributes, useRef } from 'react';
 
 import ContentArea from '@/components/layouts/ContentArea';
@@ -8,6 +9,8 @@ import Button from '@/components/ui/buttons/Button';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
 
 export default function Signup() {
+  const router = useRouter();
+
   const emailInputRef = useRef<HTMLInputElement>(null!);
   const passwordInputRef = useRef<HTMLInputElement>(null!);
 
@@ -27,7 +30,7 @@ export default function Signup() {
       console.log('response : ', response);
       alert('회원가입이 완료되었습니다.');
       // TODO -> /auth/signin 으로 리다이렉트 처리하기
-      
+      router.push('/auth/signin');
     } catch (error) {
       // axios에서 발생한 error
       if (axios.isAxiosError(error)) {
