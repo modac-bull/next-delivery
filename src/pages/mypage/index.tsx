@@ -6,8 +6,6 @@ import HeadPageMeta from '@/components/layouts/HeadPageMeta';
 import LayoutDefault from '@/components/layouts/LayoutDefault';
 import Mypage from '@/components/pages/mypage/Mypage';
 
-import { UserType } from '@/types/user';
-
 type PageProps = {
   isLoggedIn: boolean;
   user: any;
