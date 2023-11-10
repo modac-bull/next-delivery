@@ -52,7 +52,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development', // HTTPS를 사용하는 경우 true로 설정
         sameSite: 'strict',
-        maxAge: 3600,
+        maxAge: 60 * 60 * 1, // 토큰과 동일하게 1시간 설정,
         path: '/',
       }),
     );

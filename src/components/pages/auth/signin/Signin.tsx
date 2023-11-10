@@ -1,4 +1,5 @@
 import styled from '@emotion/styled/macro';
+import axios from 'axios';
 import { useRef } from 'react';
 
 import ContentArea from '@/components/layouts/ContentArea';
@@ -8,8 +9,28 @@ import ButtonText from '@/components/ui/buttons/ButtonText';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
 
 export default function Signin() {
-  const emailInputRef = useRef<HTMLInputElement>(null);
-  const passwordInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null!);
+  const passwordInputRef = useRef<HTMLInputElement>(null!);
+
+  const handleSubmit = async (event: React.SyntheticEvent) => {
+    event.preventDefault();
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
+
+    try {
+      // 로그인 API 엔드포인트로 요청
+      await axios.post('/api/auth/signin', {
+        email: enteredEmail,
+        password: enteredPassword,
+      });
+      // 로그인 성공 시 처리 이곳에서
+    } catch (error) {
+      // 에러 처리
+      console.log('로그인 실패');
+    }
+  };
+
   return (
     <>
       <Header
@@ -25,11 +46,7 @@ export default function Signin() {
 
       <ContentArea>
         <Section>
-          <form
-            onSubmit={() => {
-              console.log('submit');
-            }}
-          >
+          <form onSubmit={handleSubmit}>
             <FormGroup>
               <label htmlFor="email">이메일</label>
               <input type="email" id="email" required ref={emailInputRef} />
