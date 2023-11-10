@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useRef } from 'react';
 
 import ContentArea from '@/components/layouts/ContentArea';
@@ -9,6 +10,8 @@ import ButtonText from '@/components/ui/buttons/ButtonText';
 import { BackButton, CartButton, LikeButton } from '@/components/ui/header';
 
 export default function Signin() {
+  const router = useRouter();
+
   const emailInputRef = useRef<HTMLInputElement>(null!);
   const passwordInputRef = useRef<HTMLInputElement>(null!);
 
@@ -25,9 +28,15 @@ export default function Signin() {
         password: enteredPassword,
       });
       // 로그인 성공 시 처리 이곳에서
+      router.push('/');
     } catch (error) {
       // 에러 처리
       console.log('로그인 실패');
+      // axios에서 발생한 error
+      if (axios.isAxiosError(error)) {
+        // 에러 처리
+        alert(error.response?.data.message);
+      }
     }
   };
 

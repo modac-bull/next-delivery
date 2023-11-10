@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
-
-import { getStoreListData } from '@/apis/store/store';
 import { StoreItemType } from '@/apis/store/types';
 
 import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
 import { CartButton, LikeButton } from '@/components/ui/header';
-import LoginButton from '@/components/ui/header/LoginButton';
+import MypageButton from '@/components/ui/header/LoginButton';
 
 import StoreList from './StoreList';
 
@@ -23,7 +20,7 @@ export default function Home({ data }: Props) {
         title="메인"
         rightActions={
           <>
-            <LoginButton />
+            <MypageButton />
             <LikeButton />
             <CartButton />
           </>

@@ -10,7 +10,6 @@ type Props = {
 };
 
 export default function HomePage(props: Props) {
-  console.log('props : ', props);
   return (
     <>
       <HeadPageMeta title="음식 배달 앱 (next/ts)" />
