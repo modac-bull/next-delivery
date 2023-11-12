@@ -38,27 +38,27 @@ async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
       password: hashedPassword,
     });
 
-    // JWT 생성
-    const token = jwt.sign(
-      { userId: newUser.insertedId, email },
-      process.env.NEXT_JWT_SECRET as string,
-      { expiresIn: '1h' },
-    );
+    // // JWT 생성
+    // const token = jwt.sign(
+    //   { userId: newUser.insertedId, email },
+    //   process.env.NEXT_JWT_SECRET as string,
+    //   { expiresIn: '1h' },
+    // );
 
-    // 쿠키에 JWT 설정
-    res.setHeader(
-      'Set-Cookie',
-      cookie.serialize('auth', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV !== 'development', // HTTPS를 사용하는 경우 true로 설정
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 1, // 토큰과 동일하게 1시간 설정,
-        path: '/',
-      }),
-    );
+    // // 쿠키에 JWT 설정
+    // res.setHeader(
+    //   'Set-Cookie',
+    //   cookie.serialize('auth', token, {
+    //     httpOnly: true,
+    //     secure: process.env.NODE_ENV !== 'development', // HTTPS를 사용하는 경우 true로 설정
+    //     sameSite: 'strict',
+    //     maxAge: 60 * 60 * 1, // 토큰과 동일하게 1시간 설정,
+    //     path: '/',
+    //   }),
+    // );
 
     // 회원가입 성공 응답
-    res.status(201).json({ token });
+    res.status(201).json({ message: '회원가입 성공' });
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error', error });
   }

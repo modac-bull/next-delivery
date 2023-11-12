@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 
@@ -23,12 +24,11 @@ export default function Signin() {
 
     try {
       // 로그인 API 엔드포인트로 요청
-      await axios.post('/api/auth/signin', {
+      const result = await signIn('credentials', {
         email: enteredEmail,
         password: enteredPassword,
+        callbackUrl: '/',
       });
-      // 로그인 성공 시 처리 이곳에서
-      router.push('/');
     } catch (error) {
       // 에러 처리
       console.log('로그인 실패');
@@ -37,6 +37,14 @@ export default function Signin() {
         // 에러 처리
         alert(error.response?.data.message);
       }
+    }
+  };
+
+  const googleLoginHandler = async () => {
+    try {
+      const result = await signIn('google', { callbackUrl: '/' });
+    } catch (error) {
+      console.log('erro : ', error);
     }
   };
 
@@ -71,6 +79,9 @@ export default function Signin() {
             </FormGroup>
             <ButtonWrapper>
               <Button>로그인</Button>
+              <Button type="button" onClick={googleLoginHandler}>
+                구글로 로그인
+              </Button>
               <ButtonText href="/auth/signup">회원가입 하러가기</ButtonText>
             </ButtonWrapper>
           </form>

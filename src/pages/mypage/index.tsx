@@ -1,25 +1,25 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-
-import { verifyToken } from '@/utils/verifyToken';
+import { Session } from 'next-auth';
+import { getSession, useSession } from 'next-auth/react';
 
 import HeadPageMeta from '@/components/layouts/HeadPageMeta';
 import LayoutDefault from '@/components/layouts/LayoutDefault';
 import Mypage from '@/components/pages/mypage/Mypage';
 
 type PageProps = {
-  isLoggedIn: boolean;
-  user: any;
+  session: Session;
 };
 
-export default function MypagePage({
-  isLoggedIn,
-  user,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function MypagePage(
+  props: InferGetServerSidePropsType<typeof getServerSideProps>,
+) {
+  const { data, status } = useSession();
+
   return (
     <>
       <HeadPageMeta title="마이페이지" />
       <LayoutDefault>
-        <Mypage user={user} isLoggedIn={isLoggedIn} />
+        <Mypage user={data?.user} />
       </LayoutDefault>
     </>
   );
@@ -28,22 +28,9 @@ export default function MypagePage({
 export const getServerSideProps: GetServerSideProps<PageProps> = async (
   context,
 ) => {
-  const { req } = context;
-  const { cookies } = req;
-  const token = cookies.auth;
+  const session = await getSession({ req: context.req });
 
-  let user = null;
-  let isLoggedIn = false;
-
-  try {
-    // 토큰 검증
-    const decoded = verifyToken(token as string);
-    // 토큰이 유효하면, 디코딩된 사용자 정보를 사용할 수 있습니다.
-    user = decoded;
-    isLoggedIn = true;
-  } catch (error) {
-    // 토큰이 유효하지 않으면, user는 null 상태를 유지합니다.
-    isLoggedIn = false;
+  if (!session) {
     return {
       redirect: {
         destination: '/auth/signin',
@@ -54,8 +41,7 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async (
 
   return {
     props: {
-      isLoggedIn,
-      user,
+      session,
     },
   };
 };

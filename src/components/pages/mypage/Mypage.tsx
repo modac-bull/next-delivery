@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
 import ContentArea from '@/components/layouts/ContentArea';
@@ -8,20 +9,16 @@ import { CartButton, LikeButton } from '@/components/ui/header';
 
 type Props = {
   user: any;
-  isLoggedIn: boolean;
 };
 
-export default function Mypage({ user, isLoggedIn }: Props) {
-  const router = useRouter();
-
-  const logoutHandler = async () => {
-    try {
-      await axios.post('/api/auth/signout');
-      router.push('/');
-    } catch (error) {
-      alert('로그아웃 실패');
-    }
+export default function Mypage({ user }: Props) {
+  const isLoggedIn = Boolean(user);
+  const logoutHandler = () => {
+    signOut({ callbackUrl: '/', redirect: false }).then(
+      () => (window.location.href = '/'),
+    );
   };
+
   return (
     <>
       <Header
