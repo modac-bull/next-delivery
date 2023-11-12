@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import React from 'react';
 
 import { getFoodDetailById } from '@/apis/food/food';
 import { FoodDetailItemType } from '@/apis/food/types';

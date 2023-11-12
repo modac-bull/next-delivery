@@ -11,7 +11,7 @@ import {
 import { getStoreDetailById, getStoreListData } from '@/apis/store/store';
 import { StoreInfoType } from '@/apis/store/types';
 
-import useQuery from '@/hooks/\buseQuery';
+import useQuery from '@/hooks/useQuery';
 
 import ContentArea from '@/components/layouts/ContentArea';
 import Header from '@/components/layouts/Header';
@@ -41,38 +41,18 @@ export default function StoreDetail({ storeDetailData, foodListData }: Props) {
 
   const [loading, setLoading] = useState(true);
 
-  const { data : storeData, error, isLoading, isFetching } = useQuery(
+  const {
+    data: storeData,
+    error,
+    isLoading,
+    isFetching,
+  } = useQuery(
     'store-detail-by-id',
     () => getStoreDetailById(id).then((res) => res),
     { refetchInterval: 5000 }, // 5초마다 데이터를 새로고침합니다.
   );
-
-  // console.log('data', data);
-
-  // useEffect(() => {
-  //   if (!router.isReady) return;
-
-  //   const fetchData = async () => {
-  //     try {
-  //       // const storeDetailRes = await getStoreDetailById(id);
-  //       const foodListsRes = await getFoodListDataById(id);
-
-  //       const isLikeRes = await getLikeStoreList();
-  //       if (isLikeRes.includes(id)) {
-  //         setIsLike(true);
-  //       } else {
-  //         setIsLike(false);
-  //       }
-
-  //       // setStoreDetail(storeDetailRes);
-  //       setFoodLists(foodListsRes);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, [router]);
+  
+  console.log("storeData : ", storeData)
 
   // 좋아요
   const [isLike, setIsLike] = useState(false);

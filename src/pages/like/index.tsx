@@ -7,7 +7,7 @@ import Like from '@/components/pages/like/Like';
 export default function LikePage() {
   return (
     <>
-      <HeadPageMeta title="음식 배달 앱 (next/ts) - 좋아요F " />
+      <HeadPageMeta title="음식 배달 앱 (next/ts) - 좋아요" />
 
       <LayoutDefault>
         <Like />

@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import path from 'path';
 
 import { getFoodListDataById } from '@/apis/food/food';
 import { FoodDetailItemType } from '@/apis/food/types';
